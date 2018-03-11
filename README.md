@@ -9,7 +9,7 @@ A docker setup for deploying UCSM setups using playbooks on a local machine
 3. Build the image - `docker build -t ansible-ucs .`
 
 ## Using The Image
-From either your own folder containing your ucs ansible playbook setup or you can clone my version of the UCS one at https://github.com/btotharye/ucsm-ansible then you run the following command to run your site.yml configuration file that is in your local directory, this will map your current folder into the container and run it:
+From either your own folder containing your ucs ansible playbook setup or you can clone my version at https://github.com/btotharye/ansible-ucs then you run the following command to run your site.yml configuration file that is in your local directory, this will map your current folder into the container and run it:
 
 Using my repo example:
 `docker run -it -v /path/ucsm-ansible:/opt/ansible-ucs ansible-ucs ansible-playbook -i inventory site.yml`
