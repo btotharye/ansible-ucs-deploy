@@ -7,11 +7,14 @@ RUN yum clean all && \
 
 RUN mkdir /opt/ansible/
 RUN git clone git://github.com/ansible/ansible.git --recursive /opt/ansible/ansible
-RUN pip install paramiko PyYAML Jinja2 httplib2 six ucsmsdk ucsm_apis
+RUN pip install paramiko PyYAML Jinja2 httplib2 six ucsmsdk
 WORKDIR /opt/ansible/ansible
 ENV PATH /opt/ansible/ansible/bin:/bin:/usr/bin:/sbin:/usr/sbin
 ENV PYTHONPATH /opt/ansible/ansible/lib:/opt/ansible-ucs
 ENV ANSIBLE_LIBRARY /opt/ansible/ansible/library:/opt/ansible-ucs/library
 RUN source ./hacking/env-setup
+RUN git clone https://github.com/ciscoucs/ucsm_apis
+WORKDIR /opt/ucsm_apis
+RUN python setup.py install
 RUN mkdir /opt/ansible-ucs
 WORKDIR /opt/ansible-ucs
